@@ -7,7 +7,7 @@ class ActivityAdmin(admin.ModelAdmin):
 
 
 class StatAdmin(admin.ModelAdmin):
-    list_display = ['id', 'activity_id', 'count', 'date_done']
+    list_display = ['id', 'activity', 'count', 'date_done']
 
 
 # Register your models here.
