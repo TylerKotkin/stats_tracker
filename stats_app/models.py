@@ -16,7 +16,8 @@ class Activity(models.Model):
 
 class Stat(models.Model):
     # stat_title = models.CharField(max_length=100)
-    activity = models.ForeignKey(Activity)
+    activity = models.ForeignKey(Activity, related_name='stats')
+    # activity = models.ForeignKey(Activity)
     count = models.PositiveIntegerField(null=True, blank=True)
     date_done = models.DateTimeField(auto_now_add=True)
 
