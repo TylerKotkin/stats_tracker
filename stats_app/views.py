@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from .models import Activity, Stat
 from .serializers import ActivitySerializer, StatSerializer
@@ -21,6 +21,6 @@ class StatViewSet(viewsets.ModelViewSet):
 
     def get_serializer_context(self):
         context = super().get_serializer_context().copy()
-        context['activity_pk'] = self.kwargs['activity_pk']
+        context['activity_pk'] = self.kwargs['activity__pk']
         return context
         # return {'activity_pk': self.kwargs['activity_id']}
