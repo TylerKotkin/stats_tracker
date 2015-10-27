@@ -21,5 +21,5 @@ class Stat(models.Model):
     count = models.PositiveIntegerField(null=True, blank=True)
     date_done = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return "Date: {}. Count: {}.".format(self.date_done, self.count)
+    # def __str__(self):
+    #     return "Date: {}. Count: {}.".format(self.date_done, self.count)
