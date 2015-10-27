@@ -3,7 +3,6 @@ dj-database-url==0.3.0
 dj-static==0.0.6
 gunicorn==19.1.1
 static==0.4
-wsgiref==0.1.2
 django-rest-swagger==0.3.4
 djangorestframework==3.2.4
 django-rest-framework-nested==0.0.1
