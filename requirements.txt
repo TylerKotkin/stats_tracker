@@ -1,8 +1,13 @@
+Django==1.8.5
 dj-database-url==0.3.0
 dj-static==0.0.6
-Django==1.8.5
-django-toolbelt==0.0.1
-gunicorn==19.3.0
+gunicorn==19.1.1
+static==0.4
+wsgiref==0.1.2
+django-rest-swagger==0.3.4
+djangorestframework==3.2.4
+django-rest-framework-nested==0.0.1
+django-cors-headers==1.1.0
 psycopg2==2.6.1
-static3==0.6.1
+PyYAML==3.11
 wheel==0.24.0
