@@ -23,3 +23,23 @@ class Stat(models.Model):
 
     # def __str__(self):
     #     return "Date: {}. Count: {}.".format(self.date_done, self.count)
+
+
+def make_fake_data(num_activities=50):
+    from faker import Faker
+    from random import randint
+    fake = Faker()
+
+    # if delete_all:
+    #     Activity.objects.all().delete()
+    #     Stat.objects.all().delete()
+
+    for _ in range(num_activities):
+        a = Activity(act_title=fake.bs().title(), act_description=fake.text(max_nb_chars=200))
+        a.created_on = fake.date_time_this_year()
+        a.save()
+
+        for __ in range(10):
+            s = Stat(count=randint(1, 101), activity=a)
+            s.created_on = fake.date_time_this_month(before_now=True, after_now=False)
+            s.save()
