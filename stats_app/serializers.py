@@ -28,7 +28,6 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     activities = ActivitySerializer(many=True, read_only=True)
 
-
     class Meta:
         model = User
         fields = ('username', 'password', 'activities')

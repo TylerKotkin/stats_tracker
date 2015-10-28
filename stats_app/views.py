@@ -5,7 +5,7 @@ from .serializers import ActivitySerializer, StatSerializer, UserSerializer
 from django.contrib.auth.models import User
 from rest_framework.decorators import detail_route, api_view
 
-# from .permissions import 
+from .permissions import IsUser
 from rest_framework.response import Response
 
 # Create your views here.
@@ -14,10 +14,17 @@ class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
 
+    permission_classes = (IsUser)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class StatViewSet(viewsets.ModelViewSet):
     queryset = Stat.objects.all()
     serializer_class = StatSerializer
+
+    permission_classes = (IsUser)
 
     def get_quesyset(self):
         activity_pk = self.kwargs['activity_pk']
@@ -29,6 +36,9 @@ class StatViewSet(viewsets.ModelViewSet):
         context['activity_pk'] = self.kwargs['activity__pk']
         return context
         # return {'activity_pk': self.kwargs['activity_id']}
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class UserViewSet(viewsets.ModelViewSet):
