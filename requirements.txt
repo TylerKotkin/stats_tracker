@@ -1,6 +1,7 @@
 Django==1.8.5
 dj-database-url==0.3.0
 dj-static==0.0.6
+fake-factory==0.5.3
 gunicorn==19.1.1
 static3==0.6.1
 django-rest-swagger==0.3.4
