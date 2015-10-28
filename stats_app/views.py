@@ -1,8 +1,12 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions, status
 from .models import Activity, Stat
 from .serializers import ActivitySerializer, StatSerializer, UserSerializer
 from django.contrib.auth.models import User
+from rest_framework.decorators import detail_route, api_view
+
+# from .permissions import 
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -32,3 +36,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = 'username'
+
+
+@api_view(['GET'])
+def whoami(request):
+    user = request.user
+    if user.is_authenticated():
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+    else:
+        return Response('', status=status.HTTP_404_NOT_FOUND)
