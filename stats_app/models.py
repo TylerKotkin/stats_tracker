@@ -1,11 +1,14 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 
 class Activity(models.Model):
-    user_id = models.PositiveSmallIntegerField(null=True, blank=True)
+    # user_id = models.PositiveSmallIntegerField(null=True, blank=True)
     # user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='questions')
     act_title = models.CharField(max_length=100)
     act_description = models.CharField(max_length=250)
     created_on = models.DateTimeField(auto_now_add=True)
