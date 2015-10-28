@@ -1,7 +1,8 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from .models import Activity, Stat
-from .serializers import ActivitySerializer, StatSerializer
+from .serializers import ActivitySerializer, StatSerializer, UserSerializer
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -24,3 +25,10 @@ class StatViewSet(viewsets.ModelViewSet):
         context['activity_pk'] = self.kwargs['activity__pk']
         return context
         # return {'activity_pk': self.kwargs['activity_id']}
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    # permission_classes = (IsReadOnly,)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'username'
