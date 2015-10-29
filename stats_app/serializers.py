@@ -26,7 +26,7 @@ class ActivitySerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    activities = ActivitySerializer(many=True, read_only=True)
+    activities = ActivitySerializer(many=True, read_only=True, source='activity')
 
     class Meta:
         model = User
