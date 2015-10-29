@@ -1,3 +1,4 @@
+
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, permissions, status
 from .models import Activity, Stat
@@ -28,7 +29,7 @@ class StatViewSet(viewsets.ModelViewSet):
     queryset = Stat.objects.all()
     serializer_class = StatSerializer
 
-    permission_classes = (IsUser,)
+    # permission_classes = (IsUser,)
 
     def get_quesyset(self):
         activity_pk = self.kwargs['activity_pk']
