@@ -23,13 +23,18 @@ from stats_app import views
 router = routers.SimpleRouter()
 router.register(r'activities', views.ActivityViewSet)
 
+router.register(r'users', views.UserViewSet)
+
 activities_router = routers.NestedSimpleRouter(router, r'activities', lookup='activity')
 activities_router.register(r'stats', views.StatViewSet)
 # router.register(r'stats', views.StatViewSet)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/whoami', views.whoami, name='who-am-i'),
     url(r'^api/', include(router.urls)),
     url(r'^api/', include(activities_router.urls)),
     url(r'^docs/', include('rest_framework_swagger.urls')),
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
 ]
