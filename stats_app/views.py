@@ -1,5 +1,5 @@
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from rest_framework import viewsets, permissions, status
 from .models import Activity, Stat
 from .serializers import ActivitySerializer, StatSerializer, UserSerializer
