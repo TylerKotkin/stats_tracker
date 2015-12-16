@@ -61,3 +61,7 @@ def whoami(request):
         return Response(serializer.data)
     else:
         return Response('', status=status.HTTP_404_NOT_FOUND)
+
+
+def index_view(request):
+    return redirect('/docs/')
